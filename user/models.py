@@ -6,12 +6,12 @@ from django.dispatch import receiver
 
 class User(AbstractUser):
     email = models.EmailField(unique=True)
-    location = models.CharField(max_length=200)
-    employer = models.CharField(max_length=200)
-    title = models.CharField(max_length=200)
-    expertise = ArrayField(models.CharField(max_length=200))
+    location = models.CharField(max_length=200, null=True)
+    employer = models.CharField(max_length=200, null=True)
+    title = models.CharField(max_length=200, null=True)
+    expertise = ArrayField(models.CharField(max_length=200, null=True), null=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
