@@ -3,6 +3,7 @@ from django.contrib.auth import password_validation, authenticate
 # Django REST Framework
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
+from rest_framework.validators import UniqueValidator
 
 from user.models import User
 
@@ -31,3 +32,34 @@ class UserLoginSerializer(serializers.Serializer):
     def create(self, data):
         token, created = Token.objects.get_or_create(user=self.context['user'])
         return self.context['user'], token.key
+
+
+class UserRegisterSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+
+    username = serializers.CharField(
+        validators=[UniqueValidator(queryset=User.objects.all())]
+    )
+
+    password = serializers.CharField(min_length=6, max_length=64)
+    password_confirmation = serializers.CharField(min_length=6, max_length=64)
+
+    first_name = serializers.CharField(max_length=50)
+    last_name = serializers.CharField(max_length=50)
+
+    def validate(self, data):
+        passwd = data['password']
+        passwd_conf = data['password_confirmation']
+
+        if passwd != passwd_conf:
+            raise serializers.ValidationError('passwords must match')
+        password_validation.validate_password(passwd)
+
+        return data
+
+    def create(self, data):
+        data.pop('password_confirmation')
+        user = User.objects.create_user(**data)
+        return user
