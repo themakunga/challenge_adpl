@@ -1,0 +1,4 @@
+django
+djangorestframework
+psycopg2>=2.7.2
+django-cors-headers
