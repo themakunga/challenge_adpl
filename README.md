@@ -33,5 +33,5 @@ $ docker compose run api python manage.py createsuperuser
 
 and fill the data
 
-
+API docs available at https://themakunga.github.io/challenge_adpl/
 
