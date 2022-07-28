@@ -1,0 +1,737 @@
+swagger: '2.0'
+info:
+  title: API
+  description: ADPList API Challenge
+  contact:
+    email: nmartinez@icloud.com
+  license:
+    name: BSD License
+  version: v1
+host: localhost:8000
+schemes:
+  - http
+basePath: /api
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /area/:
+    get:
+      operationId: area_list
+      description: ''
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/AreaModel'
+      tags:
+        - area
+    post:
+      operationId: area_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AreaModel'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AreaModel'
+      tags:
+        - area
+    parameters: []
+  /area/{id}/:
+    put:
+      operationId: area_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AreaModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AreaModel'
+      tags:
+        - area
+    patch:
+      operationId: area_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AreaModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AreaModel'
+      tags:
+        - area
+    delete:
+      operationId: area_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - area
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /availability/:
+    get:
+      operationId: availability_list
+      description: ''
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/AvailabilityModel'
+      tags:
+        - availability
+    post:
+      operationId: availability_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      tags:
+        - availability
+    parameters: []
+  /availability/{id}/:
+    put:
+      operationId: availability_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      tags:
+        - availability
+    patch:
+      operationId: availability_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/AvailabilityModel'
+      tags:
+        - availability
+    delete:
+      operationId: availability_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - availability
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /expertise/:
+    get:
+      operationId: expertise_list
+      description: ''
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/Expertise'
+      tags:
+        - expertise
+    post:
+      operationId: expertise_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Expertise'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/Expertise'
+      tags:
+        - expertise
+    parameters: []
+  /expertise/{id}/:
+    put:
+      operationId: expertise_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Expertise'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Expertise'
+      tags:
+        - expertise
+    patch:
+      operationId: expertise_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Expertise'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/Expertise'
+      tags:
+        - expertise
+    delete:
+      operationId: expertise_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - expertise
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /login/:
+    post:
+      operationId: login_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenObtainPair'
+      tags:
+        - login
+    parameters: []
+  /mentor/:
+    get:
+      operationId: mentor_list
+      description: ''
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/MentorModel'
+      tags:
+        - mentor
+    post:
+      operationId: mentor_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MentorModel'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/MentorModel'
+      tags:
+        - mentor
+    parameters: []
+  /mentor/{id}/:
+    put:
+      operationId: mentor_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MentorModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MentorModel'
+      tags:
+        - mentor
+    patch:
+      operationId: mentor_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/MentorModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/MentorModel'
+      tags:
+        - mentor
+    delete:
+      operationId: mentor_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - mentor
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /reservation/:
+    get:
+      operationId: reservation_list
+      description: ''
+      parameters:
+        - name: limit
+          in: query
+          description: Number of results to return per page.
+          required: false
+          type: integer
+        - name: offset
+          in: query
+          description: The initial index from which to return the results.
+          required: false
+          type: integer
+      responses:
+        '200':
+          description: ''
+          schema:
+            required:
+              - count
+              - results
+            type: object
+            properties:
+              count:
+                type: integer
+              next:
+                type: string
+                format: uri
+                x-nullable: true
+              previous:
+                type: string
+                format: uri
+                x-nullable: true
+              results:
+                type: array
+                items:
+                  $ref: '#/definitions/ReservationModel'
+      tags:
+        - reservation
+    post:
+      operationId: reservation_create
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      tags:
+        - reservation
+    parameters: []
+  /reservation/{id}/:
+    put:
+      operationId: reservation_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      tags:
+        - reservation
+    patch:
+      operationId: reservation_partial_update
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ReservationModel'
+      tags:
+        - reservation
+    delete:
+      operationId: reservation_delete
+      description: ''
+      parameters: []
+      responses:
+        '204':
+          description: ''
+      tags:
+        - reservation
+    parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+  /token/refresh/:
+    post:
+      operationId: token_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/TokenRefresh'
+      tags:
+        - token
+    parameters: []
+  /user/register/:
+    post:
+      operationId: user_register
+      description: ''
+      parameters:
+        - name: data
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UserModel'
+      responses:
+        '201':
+          description: ''
+          schema:
+            $ref: '#/definitions/UserModel'
+      tags:
+        - user
+    parameters: []
+definitions:
+  AreaModel:
+    required:
+      - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 64
+        minLength: 1
+  AvailabilityModel:
+    required:
+      - mentor
+      - start
+      - end
+    type: object
+    properties:
+      mentor:
+        title: Mentor
+        type: integer
+      start:
+        title: Start
+        type: string
+        format: date-time
+      end:
+        title: End
+        type: string
+        format: date-time
+  Expertise:
+    required:
+      - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 64
+        minLength: 2
+  TokenObtainPair:
+    required:
+      - email
+      - password
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        minLength: 1
+      password:
+        title: Password
+        type: string
+        minLength: 1
+  Area:
+    required:
+      - name
+    type: object
+    properties:
+      name:
+        title: Name
+        type: string
+        maxLength: 64
+        minLength: 2
+  MentorModel:
+    required:
+      - user
+    type: object
+    properties:
+      user:
+        title: User
+        type: integer
+      areas:
+        type: array
+        items:
+          $ref: '#/definitions/Area'
+        readOnly: true
+      is_authorized:
+        title: Is authorized
+        type: boolean
+  UserModel:
+    required:
+      - email
+    type: object
+    properties:
+      email:
+        title: Email
+        type: string
+        format: email
+        maxLength: 254
+        minLength: 1
+      first_name:
+        title: First name
+        type: string
+        maxLength: 150
+      last_name:
+        title: Last name
+        type: string
+        maxLength: 150
+  ReservationModel:
+    required:
+      - start
+      - end
+    type: object
+    properties:
+      mentor:
+        type: array
+        items:
+          $ref: '#/definitions/MentorModel'
+        readOnly: true
+      member:
+        type: array
+        items:
+          $ref: '#/definitions/UserModel'
+        readOnly: true
+      start:
+        title: Start
+        type: string
+        format: date-time
+      end:
+        title: End
+        type: string
+        format: date-time
+  TokenRefresh:
+    required:
+      - refresh
+    type: object
+    properties:
+      refresh:
+        title: Refresh
+        type: string
+        minLength: 1
+      access:
+        title: Access
+        type: string
+        readOnly: true
+        minLength: 1

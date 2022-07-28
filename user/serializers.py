@@ -63,3 +63,4 @@ class UserRegisterSerializer(serializers.Serializer):
         data.pop('password_confirmation')
         user = User.objects.create_user(**data)
         return user
+

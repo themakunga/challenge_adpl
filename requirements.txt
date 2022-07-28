@@ -2,3 +2,7 @@ django
 djangorestframework
 psycopg2>=2.7.2
 django-cors-headers
+djangorestframework_simplejwt
+drf-yasg
+drf-yasg[validation]
+django-seed
